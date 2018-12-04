@@ -1,16 +1,16 @@
 #! /usr/bin/env python
-from setuptools import setup
+from setuptools import setup, find_packages
 
 descr = """Experimental code for BIDS using MNE."""
 
 DISTNAME = 'mne-bids'
 DESCRIPTION = descr
-MAINTAINER = 'Alexandre Gramfort'
-MAINTAINER_EMAIL = 'alexandre.gramfort@telecom-paristech.fr'
-URL = 'http://martinos.org/mne'
+MAINTAINER = 'Mainak Jas'
+MAINTAINER_EMAIL = 'mainakjas@gmail.com'
+URL = 'https://mne-tools.github.io/mne-bids/'
 LICENSE = 'BSD (3-clause)'
 DOWNLOAD_URL = 'http://github.com/mne-tools/mne-bids'
-VERSION = '0.1.dev0'
+VERSION = '0.2.dev0'
 
 if __name__ == "__main__":
     setup(name=DISTNAME,
@@ -22,6 +22,7 @@ if __name__ == "__main__":
           version=VERSION,
           download_url=DOWNLOAD_URL,
           long_description=open('README.md').read(),
+          long_description_content_type='text/markdown',
           classifiers=[
               'Intended Audience :: Science/Research',
               'Intended Audience :: Developers',
@@ -35,7 +36,6 @@ if __name__ == "__main__":
               'Operating System :: MacOS',
           ],
           platforms='any',
-          packages=[
-              'mne_bids'
-          ],
-)
+          packages=find_packages(),
+          scripts=['bin/mne_bids']
+          )

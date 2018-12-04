@@ -1,0 +1,48 @@
+version: 2
+jobs:
+    build:
+        docker:
+            - image: circleci/python:3.7.0-stretch-node-browsers
+        steps:
+            - checkout
+            - run:
+                name: Install miniconda
+                command: |
+                  wget -q http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh -O ~/miniconda.sh;
+                  chmod +x ~/miniconda.sh;
+                  ~/miniconda.sh -b -p ~/miniconda;
+                  echo "export PATH=~/miniconda/bin:$PATH" >> $BASH_ENV;
+            - run:
+                name: Setup Python environment
+                command: |
+                  conda update --yes --quiet conda
+                  conda create -n testenv --yes python=3.6
+                  source activate testenv
+                  conda install --yes --quiet numpy=1.13.1 scipy=0.19.1 matplotlib pandas=0.20.3
+                  pip install sphinx numpydoc sphinx-gallery sphinx_bootstrap_theme pillow
+                  pip install -U mne
+                  python setup.py develop
+            - run:
+                name: Build the documentation
+                command: |
+                    source activate testenv
+                    make build-doc
+            - store_artifacts:
+                path: doc/_build/html/
+                destination: html
+            - add_ssh_keys:
+                fingerprints:
+                  - "bf:ac:92:1d:dc:ca:a0:2d:aa:f6:b2:b6:d5:1c:ac:74"
+            - deploy:
+                name: github pages deployment
+                command: |
+                  source activate testenv
+                  if [ "${CIRCLE_BRANCH}" == "maint/0.1" ]; then
+                    echo "Deploying dev docs.";
+                    git config --global user.email "circle@mne.com";
+                    git config --global user.name "Circle Ci";
+                    cd doc;
+                    make install;
+                  else
+                    echo "No deployment (build: ${CIRCLE_BRANCH}).";
+                  fi

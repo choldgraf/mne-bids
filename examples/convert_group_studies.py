@@ -1,7 +1,7 @@
 """
-===============================
-Create BIDS-compatible ds000117
-===============================
+=================================
+BIDS conversion for group studies
+=================================
 
 Here, we show how to do BIDS conversion for group studies.
 The data is available here: https://openfmri.org/dataset/ds000117/
@@ -24,8 +24,11 @@ Scientific data, 2 (2015): 150001.
 # Let us import ``mne_bids``
 
 import os.path as op
-from mne_bids import raw_to_bids
+
+import mne
+from mne_bids import write_raw_bids
 from mne_bids.datasets import fetch_faces_data
+from mne_bids.utils import print_dir_tree
 
 ###############################################################################
 # And fetch the data.
@@ -65,7 +68,12 @@ for subject_id in subject_ids:
         raw_fname = op.join(data_path, repo, subject, 'MEG',
                             'run_%02d_raw.fif' % run)
 
-        # Make it BIDS compatible
-        raw_to_bids(subject_id='%02d' % subject_id, session_id='01', run=run,
-                    task='visual_faces', raw_fname=raw_fname,
-                    event_id=event_id, output_path=output_path, overwrite=True)
+        raw = mne.io.read_raw_fif(raw_fname)
+        bids_basename = ('sub-%02d_ses-01_task-VisualFaces_run-%d'
+                         % (subject_id, run))
+        write_raw_bids(raw, bids_basename, output_path, event_id=event_id,
+                       overwrite=True)
+
+###############################################################################
+# Now let's see the structure of the BIDS folder we created.
+print_dir_tree(output_path)

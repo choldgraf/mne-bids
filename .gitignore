@@ -2,9 +2,11 @@
 .Python
 dist/
 *.egg*
+build
+coverage
 
 # Sphinx documentation
-docs/_build/
+doc/_build/
 doc/generated/
 doc/auto_examples/
 doc/auto_tutorials/
@@ -21,3 +23,8 @@ cover
 .idea/
 
 *.pyc
+
+.cache
+.pytest_cache
+.ipynb_checkpoints
+.DS_Store
