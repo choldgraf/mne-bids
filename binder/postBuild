@@ -1,3 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
-python binder/run_examples.py
+echo "Running examples to download data..."
+python3 binder/run_examples.py
