@@ -5,10 +5,10 @@
 
 Computation times
 =================
-**01:25.168** total execution time for **auto_examples** files:
+**01:39.950** total execution time for **auto_examples** files:
 
-- **01:14.730**: :ref:`sphx_glr_auto_examples_convert_group_studies.py` (convert_group_studies.py)
-- **00:05.929**: :ref:`sphx_glr_auto_examples_convert_mne_sample.py` (convert_mne_sample.py)
-- **00:02.185**: :ref:`sphx_glr_auto_examples_rename_brainvision_files.py` (rename_brainvision_files.py)
-- **00:02.184**: :ref:`sphx_glr_auto_examples_convert_eeg_to_bids.py` (convert_eeg_to_bids.py)
-- **00:00.140**: :ref:`sphx_glr_auto_examples_create_bids_folder.py` (create_bids_folder.py)
+- **01:30.132**: :ref:`sphx_glr_auto_examples_convert_group_studies.py` (convert_group_studies.py)
+- **00:04.982**: :ref:`sphx_glr_auto_examples_convert_mne_sample.py` (convert_mne_sample.py)
+- **00:02.597**: :ref:`sphx_glr_auto_examples_convert_eeg_to_bids.py` (convert_eeg_to_bids.py)
+- **00:02.175**: :ref:`sphx_glr_auto_examples_rename_brainvision_files.py` (rename_brainvision_files.py)
+- **00:00.065**: :ref:`sphx_glr_auto_examples_create_bids_folder.py` (create_bids_folder.py)

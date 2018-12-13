@@ -1188,7 +1188,7 @@ Now let's see the structure of the BIDS folder we created.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 1 minutes  14.730 seconds)
+   **Total running time of the script:** ( 1 minutes  30.132 seconds)
 
 
 .. _sphx_glr_download_auto_examples_convert_group_studies.py:
