@@ -3,6 +3,7 @@ from subprocess import run
 from glob import glob
 import os.path as op
 
+print(op.abspath(__file__))
 scripts = glob(op.join(op.dirname(op.abspath(__file__)), '..', 'examples', '*.py'))
 print('Running the following scripts: {}'.format(scripts))
 for iscript in scripts:
